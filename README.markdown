@@ -10,26 +10,34 @@
 ├── tests(测试文件)
 ├── README.md(项目说明)
 └── requirements.txt(python库依赖)
+```
 
 ### 安装与运行步骤
-以下是安装步骤。
-### centos6.5
- - 下载JumperServer
-	从github下载最新版 JumperServer 源码。
-	it clone https://github.com/Topaz1618/JumpServer.git
-	cd JumpServer/
+以下是 Linux 下的安装步骤
 
- - 安装依赖项
-	pip3 install -r requirements.txt
+- 下载JumperServer
+从github下载最新版 JumperServer 源码。
+```
+ git clone https://github.com/Topaz1618/JumpServer.git
+ cd JumpServer/
+```
 
- - 运行
- 	python main.py &
+- 安装依赖项
+```
+ pip3 install -r requirements.txt
+```
+- 运行
+```
+ python main.py &
+```
 
-# 配置说明
-设置成自己的ip，端口
+### 配置说明
+
 - main.py
-	app.listen('8048', '127.0.0.1')
-
+设置成自己的ip，端口
+```
+ app.listen('8048', '127.0.0.1')
+```
 
 
 ### 注意事项
