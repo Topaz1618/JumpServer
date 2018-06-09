@@ -15,34 +15,34 @@
 ### 安装与运行步骤
 以下是 Linux 下的安装步骤
 
-- 下载JumperServer
+1. 下载JumperServer
+
 从github下载最新版 JumperServer 源码。
 ```
  git clone https://github.com/Topaz1618/JumpServer.git
  cd JumpServer/
 ```
 
-- 安装依赖项
+2. 安装依赖项
 ```
  pip3 install -r requirements.txt
 ```
-- 运行
+3. 运行
 ```
  python main.py &
 ```
 
 ### 配置说明
 
-- main.py
-设置成自己的ip，端口
+在 main.py 中 把如下行设置成自己的Ip,port
 ```
  app.listen('8048', '127.0.0.1')
 ```
 
 
 ### 注意事项
-1. 目前只支持 Python3
-2. Mac 和 Linux 下可用，Windows 环境未测试
+- 目前只支持 Python3
+- Mac 和 Linux 下可用，Windows 环境未测试
 
 
 ### LICENSE
