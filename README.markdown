@@ -1,5 +1,5 @@
 # JumpServer
-一个基于 Tornado 开发的 webssh。
+一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh远程连接到服务器。
 
 ### 架构简要说明
 ```
@@ -43,6 +43,9 @@
 ### 注意事项
 - 目前只支持 Python3
 - Mac 和 Linux 下可用，Windows 环境未测试
+
+### 截图
+
 
 
 ### LICENSE
