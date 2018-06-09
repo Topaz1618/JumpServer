@@ -3,7 +3,7 @@
 
 ### 架构简要说明
 ```
-├── handler(核心代码)
+┌── handler(核心代码)
 ├── main.py(运行 Server)
 ├── static(静态文件)
 ├── templates(模板)
@@ -25,10 +25,10 @@
  - 运行
  	python main.py &
 
-
-# 配置详细说明
-
-
+# 配置说明
+设置成自己的ip，端口
+- main.py
+	app.listen('8048', '127.0.0.1')
 
 
 
