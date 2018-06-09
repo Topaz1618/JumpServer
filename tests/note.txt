@@ -1,0 +1,212 @@
+websocket 协议 
+
+
+
+
+
+http 协议
+
+
+
+websocket 协议标识符是 ws，客户端发起一个 ws 开头的请求，tornado接受请求，到路由找到对应模板，模板里对其请求进行操作，
+因为是要实现一个webssh，所以创建一个ssh连接，到服务器端取数据，并返回，因为是双向传输，服务端(网页浏览器)发送的命令，也能发给服务端通过 paramiko 执行。
+
+
+#http://www.ruanyifeng.com/blog/2017/05/websocket.html
+
+
+
+tornado 中非阻塞 gen.coroutine 原理  
+	>>> https://www.jianshu.com/p/4430f21c431c
+	>>> http://www.dongwm.com/archives/shi-yong-tornadorang-ni-de-qing-qiu-yi-bu-fei-zu-sai/
+
+
+
+利用装饰器 gen.coroutine 和 yield 实现的异步非阻塞
+
+事实
+>>> 非阻塞能立刻返回信息	线索 --> 阻塞部分
+>>> 异步呢是处理交给内核，完成后内核通知发起请求的进程来取		线索 -->哪个函数对应了进程，哪个函数对应了内核
+>>> 函数多为阻塞			
+>>>	gen.coroutine 装饰的方法执行后返回 Future 对象
+>>> 包含 yield 的函数为生成器
+>>>
+>>>
+>>>
+>>>
+
+
+
+流程 
+
+1. 请求一进来 --> indexhandler.get 返回一个页面
+2. 提交表单 --> 
+
+
+
+
+/usr/local/bin/python3.6 /Users/topaz/Desktop/Project/Topazssh/main.py
+i initialize
+i post
+i ssh_connect_wrapped
+i ssh_conn
+线程ID>>  123145544757248
+[I 180602 20:40:58 transport:1687] Connected (version 2.0, client OpenSSH_7.4)
+[I 180602 20:40:58 transport:1687] Authentication (publickey) failed.
+[I 180602 20:40:58 transport:1687] Authentication (password) successful!
+[I 180602 20:40:59 web:2106] 200 POST / (127.0.0.1) 275.58ms
+i get_client
+ssh 
+>>> worker <handler.Worker object at 0x1054a39b0>
+future 值 >>> <handler.Worker object at 0x1054a39b0>
+worker 没异常
+sss future 值 >>> <handler.Worker object at 0x1054a39b0>
+[I 180602 20:40:59 web:2106] 101 GET /ws?id=4383717808 (127.0.0.1) 1.23ms
+w initialize
+w hello open
+w get_client_addr
+handler None
+i recycle
+
+
+
+The inner workings of ``@gen.coroutine`` and ``@gen.engine``.
+
+    The two decorators differ in their treatment of the ``callback`` argument, so we cannot simply implement ``@engine`` in terms of ``@coroutine``.
+    """
+    # On Python 3.5, set the coroutine flag on our generator, to allow it
+    # to be used with 'await'.
+
+
+
+
+Tornado 异步非阻塞实现原理
+
+Tornado 提供了多种的异步编写形式：回调、Future、协程等
+
+
+ioloop + yield
+
+>>> ioloop 
+	ioloop 的实现基于 epoll
+	epool 基于 io多路复用的机制，把进来的socket加入列表，同时监听多个，当任何socket有可读可写数据立马返回进程处理。
+	也就是说 Tornado 的 ioloop 把每个进来的socket加入到列表，有数据时返给客户端，客户端不能立刻得到响应，这么看呢它是一种阻塞io
+
+>>> yield Future
+	处理完主动通知客户端来取，不需要一直等待，或者反复询问就是异步。那么，异步是如何实现的？
+	通过 yield Future ，yield 关键字和 return 类似，都是返回一个值。但是yield返回的是一个迭代器，如果在需要处理90s的函数后调用一个yield 关键字，那么就能立刻得到一个返回结果，虽然不是一个执行完的结果，但是也立刻返回了，并且处理完成后通知你。异步非阻塞没毛病吧
+	那么怎么知道它处理好了呢？
+	Future 方法，Future.set_result() 给Future 设置值， Future.result() 获取值，当处理好后，在处理函数中给Future设置一个表示它处理完的值，获取发现 OMG 确认过眼神是对的那个值，那就是处理好了。
+
+问题来了，谁在获取，如果是客户在获取，那还是同步啊，这个让我google以下，再来回答你，yup 我就是卡在这了
+
+首先看了下官网关于异步非阻塞的描述，emmm不太详细，想偷个懒儿看看现成答案，但就是没有能特别好的回答我的问题的，so兜兜转转还是要看源码
+
+可爱的我的代码
+@gen.coroutine
+def post(self):
+	future = Future()
+	t = threading.Thread(target=self.ssh_connect_wrapped, args=(future,))
+	t.setDaemon(True)   #守护线程
+	t.start()
+	worker = yield future
+
+源码
+def coroutine(func, replace_callback=True):		#func 是啥知道不，yup post
+    return _make_coroutine_wrapper(func, replace_callback=True)	#把 post 传给了make_coroutine_wrapper
+
+def _make_coroutine_wrapper(func, replace_callback):	#func ==> post replace_callback ==> True
+    wrapped = func
+    if hasattr(types, 'coroutine'):
+        func = types.coroutine(func)	#这步去找了一个函数
+
+    @functools.wraps(wrapped)	#wrapped ==> post
+    def wrapper(*args, **kwargs):
+        future = _create_future()
+
+        if replace_callback and 'callback' in kwargs:
+            callback = kwargs.pop('callback')
+            IOLoop.current().add_future(
+                future, lambda future: callback(future.result()))
+
+        try:
+            result = func(*args, **kwargs)
+        except (Return, StopIteration) as e:
+            result = _value_from_stopiteration(e)
+        except Exception:
+            future_set_exc_info(future, sys.exc_info())
+            try:
+                return future
+            finally:
+                # Avoid circular references
+                future = None
+        else:
+            if isinstance(result, GeneratorType):
+                try:
+                    orig_stack_contexts = stack_context._state.contexts
+                    yielded = next(result)
+                    if stack_context._state.contexts is not orig_stack_contexts:
+                        yielded = _create_future()
+                        yielded.set_exception(
+                            stack_context.StackContextInconsistentError(
+                                'stack_context inconsistency (probably caused '
+                                'by yield within a "with StackContext" block)'))
+                except (StopIteration, Return) as e:
+                    future_set_result_unless_cancelled(future, _value_from_stopiteration(e))
+                except Exception:
+                    future_set_exc_info(future, sys.exc_info())
+                else:
+                    runner = Runner(result, future, yielded)
+                    future.add_done_callback(lambda _: runner)
+                yielded = None
+                try:
+                    return future
+                finally:
+        future_set_result_unless_cancelled(future, result)
+        return future
+
+    wrapper.__wrapped__ = wrapped
+    wrapper.__tornado_coroutine__ = True
+    return wrapper
+
+
+
+
+def coroutine(func):
+	#step1 检查post是不是协程
+	#step2 检查post是不是生成器
+	#下面的代码主要是为了支持那些功能，返回类似于生成器的对象
+
+
+
+
+
+
+
+
+
+装饰器从生成器接收一个 Future 对象, 等待(非阻塞的)这个 Future 对象执行完成, 然后”解开(unwraps)” 这个 Future 对象，并把结果作为 yield 表达式的结果传回给生成器. 大多数异步代码从来不会直接接触 Future 类 除非 Future 立即通过异步函数返回给 yield 表达式.
+
+
+
+
+future.set_result(worker)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
