@@ -1,5 +1,5 @@
 # JumpServer
-一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh远程连接到服务器。
+一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh 连接到远程服务器。
 
 ### 架构简要说明
 ```
@@ -13,12 +13,12 @@
 ```
 
 ### 安装与运行步骤
-以下是 Linux 下的安装步骤
+
 
 1. 下载JumperServer
 
-从github下载最新版 JumperServer 源码。
 ```
+ 从github下载最新版 JumperServer 源码。
  git clone https://github.com/Topaz1618/JumpServer.git
  cd JumpServer/
 ```
@@ -34,7 +34,7 @@
 
 ### 配置说明
 
-在 main.py 中 把如下行设置成自己的Ip,port
+在 main.py 中 把如下行设置成自己的 ip 和端口
 ```
  app.listen('8048', '127.0.0.1')
 ```
@@ -45,6 +45,19 @@
 - Mac 和 Linux 下可用，Windows 环境未测试
 
 ### 截图
+
+1. 登录页面
+![avatar](static/img/login.png)
+
+2. terminal
+
+![avatar](static/img/terminal.png)
+
+3. 执行命令效果
+![avatar](static/img/terminal1.png)
+
+
+![avatar](static/img/terminal2.png)
 
 
 
