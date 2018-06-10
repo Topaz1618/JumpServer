@@ -2,13 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> WebSSH </title>
+    <link href="static/css/reset.css" rel="stylesheet" type="text/css" >
+    <link href="static/css/structure.css" rel="stylesheet" type="text/css" >
+    <link href="static/css/xterm.min.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/fullscreen.min.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-    <form action="/" method="POST" enctype="multipart/form-data">
-        <input type="text" name="text">
-        <input type="submit" value="connent">
 
-    </form>
+<form class="box login" id="connect" action="" type="post" enctype="multipart/form-data">
+	<fieldset class="boxBody">
+        <label for="Hostname">Hostname</label>
+        <input class="form-control" type="text" name="hostname" value="">
+        <label for="Port">Port</label>
+        <input class="form-control" type="text" name="port" value="">
+        <label>Username</label>
+        <input type="text" name="username" value="">
+        <label>Password</label>
+        <input type="password" name="password" placeholder=""  value="">
+	</fieldset>
+	<footer>
+	  <label><input type="checkbox" tabindex="3">Keep me logged in</label>
+        {% module xsrf_form_html() %}
+	  <input type="submit" class="btnLogin" value="Login" tabindex="4">
+	</footer>
+
+
+</form>
+
+<div class="container">
+    <div id="status" style="color: red;"></div>
+    <div id="terminal"></div>
+</div>
+
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/xterm.min.js"></script>
+<script src="static/js/fullscreen.min.js"></script>
+<script src="static/js/main.js"></script>
 </body>
 </html>

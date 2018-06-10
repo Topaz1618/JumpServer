@@ -21,6 +21,7 @@ class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         print('i get')
         self.render('index.html')
+        # self.render('test.html')
 
     def get_port(self):
         value = self.get_value('port')
