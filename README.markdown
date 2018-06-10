@@ -13,11 +13,11 @@
 ```
 
 ### 环境
-Python 3.6.5
+- Python 3.6.5
 
-Tornado 5.0.1
+- Tornado 5.0.1
 
-Centos 7.4
+- CentOS 7.4
 
 ### 安装与运行步骤
 
