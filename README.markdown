@@ -51,17 +51,18 @@
 
 2. terminal
 
-![avatar](static/img/terminal.png)
+ ![avatar](static/img/terminal.png)
 
 3. 执行命令效果
 ![avatar](static/img/terminal1.png)
 
 
-![avatar](static/img/terminal2.png)
+ ![avatar](static/img/terminal2.png)
 
 
 
 ### LICENSE
 开源协议：MPL
-请遵守MPL协议，对Minos进行二次开发与使用。
+
+请遵守MPL协议，对 JumpServer 进行二次开发与使用。
 
