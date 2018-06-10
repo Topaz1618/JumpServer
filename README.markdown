@@ -50,14 +50,13 @@
 ![avatar](static/img/login.png)
 
 2. terminal
+![avatar](static/img/terminal.png)
 
- ![avatar](static/img/terminal.png)
-
-3. 执行命令效果
+3. 执行命令效果1
 ![avatar](static/img/terminal1.png)
 
-
- ![avatar](static/img/terminal2.png)
+4. 执行命令效果2
+![avatar](static/img/terminal2.png)
 
 
 
