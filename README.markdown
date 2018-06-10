@@ -12,6 +12,13 @@
 └── requirements.txt(python库依赖)
 ```
 
+### 环境
+Python 3.6.5
+
+Tornado 5.0.1
+
+Centos 7.4
+
 ### 安装与运行步骤
 
 
@@ -40,10 +47,6 @@
 ```
 
 
-### 注意事项
-- 目前只支持 Python3
-- Mac 和 Linux 下可用，Windows 环境未测试
-
 ### 截图
 
 1. 登录页面
@@ -58,6 +61,10 @@
 4. 执行命令效果2
 ![avatar](static/img/terminal2.png)
 
+
+### 注意事项
+- 目前只支持 Python3
+- Mac 和 Linux 下可用，Windows 环境未测试
 
 
 ### LICENSE
