@@ -22,19 +22,20 @@
 ### 安装与运行步骤
 
 
-1. 下载JumperServer
+1.下载JumperServer
 
 ```
- 从github下载最新版 JumperServer 源码。
+ # 从github下载最新版 JumperServer 源码
+
  git clone https://github.com/Topaz1618/JumpServer.git
  cd JumpServer/
 ```
 
-2. 安装依赖项
+2.安装依赖项
 ```
  pip3 install -r requirements.txt
 ```
-3. 运行
+3.运行
 ```
  python main.py &
 ```
