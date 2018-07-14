@@ -68,8 +68,3 @@
 - Mac 和 Linux 下可用，Windows 环境未测试
 
 
-### LICENSE
-开源协议：MPL
-
-请遵守MPL协议，对 JumpServer 进行二次开发与使用。
-
