@@ -1,4 +1,4 @@
-<img src='static/images/meowfile.png' width='400' title='MeowFile, A file management system'>
+<img src='static/img/JumpTerminal.png' width='400' title='MeowFile, A file management system'>
 
 A web application written in Python, based on Tornado and paramiko, to connect to a remote server through a browser ssh made by [Topaz](https://topaz1618.github.io/about)|[Website](http://topazaws.com/)|[Blog](https://topaz1618.github.io/blog/)
 
