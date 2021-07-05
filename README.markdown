@@ -2,7 +2,7 @@
 
 A web application written in Python, based on Tornado and paramiko, to connect to a remote server through a browser ssh made by [Topaz](https://topaz1618.github.io/about)|[Website](http://topazaws.com/)|[Blog](https://topaz1618.github.io/blog/)
 
-[Chinese README](https://github.com/Topaz1618/JumpTerminal/README_CN.md)
+[Chinese README](https://github.com/Topaz1618/JumpTerminal/blob/master/README_CN.markdown)
 
 
 ## Environment
