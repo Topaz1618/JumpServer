@@ -15,7 +15,7 @@ A web application written in Python, based on Tornado and paramiko, to connect t
 
 ```
   $git clone https://github.com/Topaz1618/JumpTerminal.git
-  $cd JumpServer/
+  $cd JumpTerminal/
 ```
 
 2. Install dependencies
