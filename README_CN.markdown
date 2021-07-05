@@ -3,7 +3,7 @@
 
 一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh 连接到远程服务器。作者: [Topaz](https://topaz1618.github.io/about)
 
-[English README](https://github.com/Topaz1618/FileManageSystem/blob/master/README.md)
+[English README](https://github.com/Topaz1618/JumpTerminal/blob/master/README.markdown)
 
 ### 架构简要说明
 ```
@@ -31,8 +31,8 @@
 ```
  # 从github下载最新版 JumperServer 源码
 
- git clone https://github.com/Topaz1618/JumpServer.git
- cd JumpServer/
+ git clone https://github.com/Topaz1618/JumpTerminal.git
+ cd JumpTerminal/
 ```
 
 2.安装依赖项
