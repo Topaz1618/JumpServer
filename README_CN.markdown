@@ -1,5 +1,9 @@
-# JumpServer
-一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh 连接到远程服务器。
+<img src='static/images/meowfile.png' width='400' title='MeowFile, A file management system'>
+
+
+一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh 连接到远程服务器。作者: [Topaz](https://topaz1618.github.io/about)
+
+[English README](https://github.com/Topaz1618/FileManageSystem/blob/master/README.md)
 
 ### 架构简要说明
 ```
@@ -67,4 +71,5 @@
 - 目前只支持 Python3
 - Mac 和 Linux 下可用，Windows 环境未测试
 
-
+## License
+Licensed under the MIT license
