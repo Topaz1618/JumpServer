@@ -2,7 +2,7 @@
 
 A web application written in Python, based on Tornado and paramiko, to connect to a remote server through a browser ssh made by [Topaz](https://topaz1618.github.io/about)|[Website](http://topazaws.com/)|[Blog](https://topaz1618.github.io/blog/)
 
-[Chinese README](https://github.com/Topaz1618/FileManageSystem/blob/master/README_CN.md)
+[Chinese README](https://github.com/Topaz1618/JumpTerminal/README_CN.md)
 
 
 ## Environment
@@ -14,7 +14,7 @@ A web application written in Python, based on Tornado and paramiko, to connect t
 1. Download MeowFile
 
 ```
-  $git clone https://github.com/Topaz1618/JumpServer.git
+  $git clone https://github.com/Topaz1618/JumpTerminal.git
   $cd JumpServer/
 ```
 
