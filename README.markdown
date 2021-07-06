@@ -2,7 +2,9 @@
 DonutsTerminal, A online termainal'>
  
 
-A web application written in Python, based on Tornado and paramiko, to connect to a remote server through a browser ssh made by [Topaz](https://topaz1618.github.io/about)|[Website](http://topazaws.com/)|[Blog](https://topaz1618.github.io/blog/)
+An online terminal web application written in Python, based on Tornado and paramiko, allow remote connection to the server via ssh in the browser. (Commonly used in CMDB, monitoring system or virtual host management console)
+
+Author: [Topaz](https://topaz1618.github.io/about) ([Website](http://topazaws.com/)|[Blog](https://topaz1618.github.io/blog/)
 
 [Chinese README](https://github.com/Topaz1618/DonutsTerminal/blob/master/README_CN.markdown)
 
