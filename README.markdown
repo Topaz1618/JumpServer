@@ -1,4 +1,4 @@
-<img src='static/img/DonutsTerminal.png' width='260' height='60' title='
+<img src='static/img/Donuts.png' width='260' height='60' title='
 DonutsTerminal, A online termainal'>
  
 
