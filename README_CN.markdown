@@ -1,4 +1,5 @@
-<img src='static/images/donuts_logo.png' title='DonutsTerminal, A online terminal'>
+<img src='static/img/donuts_logo.png' title='
+DonutsTerminal, A online termainal'>
 
 
 一个 Python 编写的 web 应用，基于 Tornado 和 paramiko 开发，实现通过浏览器 ssh 连接到远程服务器。作者: [Topaz](https://topaz1618.github.io/about)
