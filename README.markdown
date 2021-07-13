@@ -1,4 +1,4 @@
-<img src='static/img/donuts_logo.png' title='
+<img src='static/img/donuts.png' title='
 DonutsTerminal, A online termainal'>
  
 
